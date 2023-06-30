@@ -34,11 +34,15 @@ macro_rules! digit {
 ////////// DO NOT CHANGE ABOVE HERE /////////
 
 // TODO: create `number!()` macro.
-
+macro_rules! number {
+    ($($num:ident )*) => {
+        concat!($(digit!($num)),*)
+    }
+}
 ////////// DO NOT CHANGE BELOW HERE /////////
 
 fn main() {
-    let my_number = number!(nine three seven two zero).parse::<u32>().unwrap();
+    let my_number = number!(nine three seven two zero ).parse::<u32>().unwrap();
     let my_other_number = number!(one two four six eight zero).parse::<u32>().unwrap();
     println!("{}", my_number + my_other_number); // = 218400
 }
